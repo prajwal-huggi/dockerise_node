@@ -1,0 +1,51 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Production build output
+/dist
+/build
+.next/ # Next.js specific build output
+.nuxt/ # Nuxt.js specific build output
+.vuepress/dist/ # VuePress specific build output
+public/dist/ # If you're building frontend assets into public/dist
+
+# Compiled/transpiled files
+*.js.map
+*.flow
+*.tsbuildinfo
+
+# Editor/OS specific files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Test coverage
+/coverage
+
+# Misc
+.npm/
+.yarn/
+*.tgz
+*.zip
+.eslintcache
+.prettierignore
+.prettierrc.js
