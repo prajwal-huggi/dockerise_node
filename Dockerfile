@@ -1,29 +1,23 @@
-FROM node:18-bullseye AS builder
+# Stage 1: Dependencies
+FROM node:18-bullseye AS deps
 
 WORKDIR /app
 
-COPY pakcage*.json ./
+COPY package*.json ./
 
 RUN npm ci --silent
 
-COPY . .
-
-RUN npm run build || true
-
-RUN npm prune --production --silent
-
+# Stage 2: Runner
 FROM node:18-slim AS runner
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY --from=builder /app/package*.json ./
-
-COPY --from=builder /app/node_modules ./node_modules
-
-COPY --from=builder /app/dist ./dist
+# Copy only the necessary parts
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
 EXPOSE 3000
 
-CMD ["node", "dist/main.js"]
+CMD ["node", "main.js"]
